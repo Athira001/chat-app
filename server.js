@@ -3,6 +3,8 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server)
 
+const PORT = process.env.PORT || 9090;
+
 app.get('/', (req, res)=>{
   console.log(__dirname);
   res.sendFile(__dirname + '/public/chat-client.html' );
@@ -24,7 +26,7 @@ io.on('connection', (client)=>{
 
 
 
-server.listen(9090, ()=>{
+server.listen(PORT, ()=>{
   console.log("server started.......");
 })
 
